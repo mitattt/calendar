@@ -17,8 +17,8 @@ export const CalendarGrid = ({ startDay }) => {
           key={currDay.unix()}
           className={classNames(
             styles.calendar__wrapper, {
-              calendar__is_weeekend: currDay.day() === 6 || currDay.day() === 0
-            } // FIXME: ask on QnA how to combine 2 classes
+              [styles.calendar__is_weekend]: currDay.day() === 6 || currDay.day() === 0
+            }
           )}
         >
           <div className={styles.calendar__row_in_cell}>
