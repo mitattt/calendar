@@ -1,0 +1,22 @@
+.container {
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+}
+
+.button {
+  height: 35px;
+  width: 35px;
+  background-color: #e6b0b0;;
+  border-radius: 4px;
+
+  &__middle {
+    font-size: 16px;
+    font-weight: bold;
+    height: 35px;
+    width: 70px;
+    background-color: #e6b0b0;;
+    border-radius: 4px;
+    margin: 0 1px;
+  }
+}
