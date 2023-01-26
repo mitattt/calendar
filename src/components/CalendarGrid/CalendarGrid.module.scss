@@ -1,20 +1,21 @@
 .calendar {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  grid-template-rows: repeat(6, 1fr);
-  grid-gap: 1px;
+  grid-template-rows: repeat(6, 1fr);  
   
-  
-  background-color: #404040;
-
   &__wrapper {
     min-width: 140px;
     min-height: 100px;
-    background-color:#b47071;
     color: #1e1f21;
     font-weight: 600;
-    
+    border: 1px solid #83728f;
 
+    transition: 0.2s ease;
+
+    
+    &:hover {
+      background-color: rgba($color: #000000, $alpha: 0.2)
+    }
   }
 
   &__row_in_cell {
@@ -35,15 +36,13 @@
     align-items:center;
     height: 100%;
     width: 100%;
-    background-color:#29749775;
+    background-color:#4b3c72;
+    color: #FFF;
     border-radius: 50%
   }
 
   &__is_weekend {
-    background-color:aquamarine;
-  }
-
-  &__is_today {
-    background-color: blue;
+    color: #FFF;
+    background-color: rgba($color: #000000, $alpha: 0.5)
   }
 }
