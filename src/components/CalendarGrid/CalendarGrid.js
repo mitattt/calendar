@@ -14,7 +14,7 @@ export const CalendarGrid = ({ startDay }) => {
     <div className={styles.calendar}>
       {daysArray.map((currDay) => (
         <div
-          key={currDay.format('DDMMYYYY')}
+          key={currDay.unix()}
           className={classNames(
             styles.calendar__wrapper, {
               calendar__is_weeekend: currDay.day() === 6 || currDay.day() === 0
