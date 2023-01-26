@@ -1,14 +1,16 @@
 .days {
   display: grid;
-  grid-template-columns: repeat(7, 1fr); 
+  grid-template-columns: repeat(7, 1fr);
 
   &__currDay {
     display: flex;
-    justify-content: center;
-    padding: 20px 0 5px 0;
+    justify-content: flex-end;
+    padding: 5px 5px 5px 0;
     font-size: 20px;
+    font-weight: 600;
   }
 }
+
 
 .calendar {
   display: grid;
@@ -18,7 +20,7 @@
   &__wrapper {
     min-width: 140px;
     min-height: 100px;
-    color: #1e1f21;
+    color: #1e1f216f;
     font-weight: 600;
     border: 1px solid rgba(0, 0, 0, 0.281);
 
@@ -31,6 +33,7 @@
 
   &__row_in_cell {
     display: flex;
+    justify-content: flex-end;
   }
 
   &__day_wrapper {
@@ -53,7 +56,11 @@
   }
 
   &__is_weekend {
-    color: #d1c5c5;
-    background-color: rgba($color: #000000, $alpha: 0.5);
+    background-color: rgba($color: #000000, $alpha: 0.2);
   }
+}
+
+
+.is_selected {
+  color: #1e1f21;
 }

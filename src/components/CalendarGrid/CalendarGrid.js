@@ -4,18 +4,24 @@ import styles from './CalendarGrid.module.scss';
 import classNames from 'classnames';
 import moment from 'moment/moment';
 
-export const CalendarGrid = ({ startDay }) => {
+export const CalendarGrid = ({ startDay, today }) => {
   const day = startDay.clone();
   const daysArray = [...Array(42)].map(() => day.add(1, 'day').clone());
 
   const isToday = (day) => moment().isSame(day, 'day');
+  const isSelectedMonth = (day) => today.isSame(day, 'month');
   const DaysOfTheWeek = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
 
   return (
     <>
       <div className={styles.days} >
         {[...DaysOfTheWeek].map((el, i) => (
-          <div key={i} className={styles.days__currDay}>
+          <div
+            key={i}
+            className={classNames(
+              styles.days__currDay,
+              styles.is_selected
+            )}>
             {el}
           </div>
         ))}
@@ -27,7 +33,8 @@ export const CalendarGrid = ({ startDay }) => {
             key={currDay.unix()}
             className={classNames(
               styles.calendar__wrapper, {
-                [styles.calendar__is_weekend]: currDay.day() === 6 || currDay.day() === 0
+                [styles.calendar__is_weekend]: currDay.day() === 6 || currDay.day() === 0,
+                [styles.is_selected]: isSelectedMonth(currDay)
               }
             )}
           >

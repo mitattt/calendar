@@ -29,7 +29,7 @@ const App = () => {
         nextHandler={nextHandler}
 
       />
-      <CalendarGrid startDay={startDay} />
+      <CalendarGrid startDay={startDay} today={today} />
     </div>
   );
 };
