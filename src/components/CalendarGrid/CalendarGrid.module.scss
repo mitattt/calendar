@@ -1,0 +1,49 @@
+.calendar {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+  grid-gap: 1px;
+  
+  
+  background-color: #404040;
+
+  &__wrapper {
+    min-width: 140px;
+    min-height: 100px;
+    background-color:#b47071;
+    color: #1e1f21;
+    font-weight: 600;
+    
+
+  }
+
+  &__row_in_cell {
+    display: flex;
+  }
+
+  &__day_wrapper {
+    height: 33px;
+    width: 31px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__current_day {
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    height: 100%;
+    width: 100%;
+    background-color:#29749775;
+    border-radius: 50%
+  }
+
+  &__is_weekend {
+    background-color:aquamarine;
+  }
+
+  &__is_today {
+    background-color: blue;
+  }
+}
