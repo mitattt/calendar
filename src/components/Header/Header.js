@@ -1,14 +1,21 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 import { AddButton } from '../AddButton';
 import { DateSwitcher } from '../DateSwitcher';
 import styles from './Header.module.scss';
 
-// eslint-disable-next-line react/prop-types
-export const Header = ({ today }) => {
+export const Header = ({
+  today, currHandler, prevHandler, nextHandler
+}) => {
   return (
     <div className={styles.container}>
       <AddButton />
-      <DateSwitcher today={today}/>
+      <DateSwitcher
+        today={today}
+        prevHandler={prevHandler}
+        currHandler={currHandler}
+        nextHandler={nextHandler}
+      />
     </div>
   );
 };
