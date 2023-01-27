@@ -28,7 +28,6 @@ const App = () => {
   const prevHandler = () => {
     setToday(today => today.clone().subtract(1, 'month'));
   };
-  const currHandler = () => { setToday(moment()); };
   const nextHandler = () => {
     setToday(today => today.clone().add(1, 'month'));
   };
@@ -139,10 +138,8 @@ const App = () => {
       <div className={styles.container}>
         <Header
           today={today}
-          prevHandler={prevHandler}
-          currHandler={currHandler}
-          nextHandler={nextHandler}
           openFormHandler={openFormHandler}
+          setToday={setToday}
 
         />
         <CalendarGrid

@@ -2,7 +2,7 @@
   "events": [
     {
       "id": 1,
-      "title": "go to the bath",
+      "title": "go ",
       "description": "at 00 00",
       "date": 1674770400
     },
@@ -35,12 +35,6 @@
       "title": "te",
       "description": "at 22:02:00",
       "date": 1674676920
-    },
-    {
-      "title": "khjk",
-      "description": "hjkhjk",
-      "date": "1674836497",
-      "id": 7
     }
   ]
 }
