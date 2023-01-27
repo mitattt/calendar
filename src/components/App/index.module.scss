@@ -20,24 +20,120 @@
   }
 
   &__wrapper {
+    display: flex;
+    flex-direction: column;
     width: 400px;
-    background-color:cadetblue;
+    background-color:white;
     color: black;
     height: 500px;
+    padding: 20px;
+  }
+
+
+  &__hint {
+    font-size: 13px;
+    opacity: 0.3;
+    margin-bottom: 10px;
+    font-weight: 600;
+  }
+
+  &__createdAt {
+    color: grey;
+    font-size: 13px;
+    margin-bottom: 40px;
+    font-weight: 600;
   }
 
   &__title {
+    border: unset;
+    border-bottom: 1px solid grey;
     display: flex;
     align-items: center;
     width: 100%;
     height: 30px;
     background-color: #fff;
+    margin-bottom: 40px;
+  }
+  
+  &__description {
+    border: unset;
+    border-bottom: 1px solid grey;
+    width: 100%;
+    height: 100px;
+    margin-bottom: 40px;
+  }
 
-    &::after {
-      content: "";
-      height: 10px;
-      position: absolute;
-      background-color:#000000;
+  &__date, &__time {
+    width: 100%;
+    border-bottom: 1px solid grey;
+    padding: 5px;
+  }
+
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 35px;
+
+    &__wrapper {
+      input[type=time]::-webkit-inner-spin-button {
+        display: none;
+        }
     }
   }
+
+  &__title::placeholder {
+    font-weight: 600;
+    opacity: 0.5;
+    font-size: 15px;
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: center;
+  }
+  
+  &__button_save {
+    font-family: inherit;
+    font-weight: 600;
+    margin: 0 auto;
+    width: 100px;
+    height: 40px;
+    background-color:greenyellow;
+    border-radius: 5px;
+  }
+
+  &__button_cancel {
+    font-family: inherit;
+    font-weight: 600;
+    margin: 0 auto;
+    width: 100px;
+    height: 40px;
+    background-color:red;
+    border-radius: 5px;
+  }
+}
+
+input[type="time"], input[type="date"] {
+  border: none;
+  border-bottom: 1px solid grey;
+  display: block;
+  font-size: 15px;
+  font-family: inherit;
+  font-weight: 600;
+  opacity: 0.8;
+}
+
+input[type="time"]:before {
+  content: attr(placeholder) !important;
+  color: #aaa;
+  font-style:italic;
+  font-size:0.9em;
+}
+
+input[type="date"]:before {
+  content: attr(placeholder) !important;
+  color: #aaa;
+  font-style:italic;
+  font-size:0.9em;
 }
