@@ -4,7 +4,12 @@ import styles from './CalendarGrid.module.scss';
 import classNames from 'classnames';
 import moment from 'moment/moment';
 
-export const CalendarGrid = ({ startDay, today, events }) => {
+export const CalendarGrid = ({
+  startDay,
+  today,
+  events,
+  openFormHandler
+}) => {
   const day = startDay.clone();
   const daysArray = [...Array(42)].map(() => day.add(1, 'day').clone());
 
@@ -58,7 +63,10 @@ export const CalendarGrid = ({ startDay, today, events }) => {
                       .filter(ev => ev.date >= currDay.format('X') && ev.date <= currDay.clone().endOf('day').format('X'))
                       .map(ev => (
                         <li key={ev.id}>
-                          <button className={styles.calendar__event_item_wrapper}>
+                          <button
+                            className={styles.calendar__event_item_wrapper}
+                            onClick={(e) => openFormHandler('Update', ev)}
+                          >
                             {ev.title}
                           </button>
                         </li>
