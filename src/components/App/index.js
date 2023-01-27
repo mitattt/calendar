@@ -44,13 +44,28 @@ const App = () => {
         isVisibleForm && (
           <div className={styles.form__position_wrapper}>
             <div className={styles.form__wrapper}>
-              <div className={styles.form__createdAt}></div>
-              <div className={styles.form__title}>sdfsdfsdf</div>
-              <div className={styles.form__description}></div>
+              <div className={styles.form__createdAt}>Created at 23.12.200 12:21</div>
+              <p className={styles.form__hint}>Title *</p>
+              <input
+                className={styles.form__title}
+                placeholder='Title goes here'
+                required
+              ></input>
+              <p className={styles.form__hint}>Description</p>
+              <input className={styles.form__description}></input>
               <div className={styles.form__container}>
-                <div className={styles.form__date}></div>
-                <div className={styles.form__time}></div>
+                <div className={styles.forn__container_wrapper}>
+                  <p className={styles.form__hint}>Date</p>
+                  <input type='date' className={styles.form__date}></input>
+                </div>
+                <div className={styles.forn__container_wrapper}>
+                  <p className={styles.form__hint}>Begin time</p>
+                  <label htmlFor="no_step">
+                  </label>
+                  <input type="time" id="no_step" className={styles.form__time}></input>
+                </div>
               </div>
+              <button className={styles.form__button}>Save</button>
             </div>
           </div>
         )
