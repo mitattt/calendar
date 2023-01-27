@@ -51,6 +51,30 @@ const App = () => {
     }));
   };
 
+  const eventFetchHandler = () => {
+    const fetchUrl = method === 'Update'
+      ? `${BASE_URL}/events/${event.id}`
+      : `${BASE_URL}/events`;
+    const httpMethod = method === 'Update' ? 'PATCH' : 'POST';
+
+    fetch(fetchUrl, {
+      method: httpMethod,
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(event)
+    })
+      .then(res => res.json())
+      .then(res => {
+        if (method === 'Update') {
+          setEvents(prev => prev.map(e => e.id === res.id ? res : e));
+        } else {
+          setEvents(prev => [...prev, res]);
+        }
+        cancelFormHandler();
+      });
+  };
+
   useEffect(() => {
     fetch(`${BASE_URL}/events?date_gte=${startDateQuery}&date_lte=${endDateQuery}`)
       .then(res => res.json())
@@ -95,7 +119,12 @@ const App = () => {
                 </div>
               </div>
               <div className={styles.form__buttons}>
-                <button className={styles.form__button_save}>{method}</button>
+                <button
+                  className={styles.form__button_save}
+                  onClick={eventFetchHandler}
+                >
+                  {method}
+                </button>
                 <button
                   className={styles.form__button_cancel}
                   onClick={cancelFormHandler}
