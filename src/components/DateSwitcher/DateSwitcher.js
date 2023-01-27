@@ -19,7 +19,7 @@ export const DateSwitcher = ({
         onClick={currHandler}
         className={styles.button__middle}
       >
-        {today.format('MMMM')}
+        {today.format('MMMM')} {today.format('YYYY')}
       </button>
 
       <button

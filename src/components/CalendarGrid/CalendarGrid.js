@@ -4,7 +4,7 @@ import styles from './CalendarGrid.module.scss';
 import classNames from 'classnames';
 import moment from 'moment/moment';
 
-export const CalendarGrid = ({ startDay, today }) => {
+export const CalendarGrid = ({ startDay, today, events }) => {
   const day = startDay.clone();
   const daysArray = [...Array(42)].map(() => day.add(1, 'day').clone());
 
@@ -19,8 +19,7 @@ export const CalendarGrid = ({ startDay, today }) => {
           <div
             key={i}
             className={classNames(
-              styles.days__currDay,
-              styles.is_selected
+              styles.days__currDay
             )}>
             {el}
           </div>
@@ -39,13 +38,33 @@ export const CalendarGrid = ({ startDay, today }) => {
             )}
           >
             <div className={styles.calendar__row_in_cell}>
-              <div className={styles.calendar__day_wrapper}>
-                {!isToday(currDay) && currDay.format('D')}
-                {isToday(currDay) && (
-                  <div className={styles.calendar__current_day}>
-                    {currDay.format('D')}
-                  </div>
-                )}
+              <div className={styles.calendar__show__day_wrapper}>
+                <div className={styles.calendar__day_wrapper}>
+                  {isToday(currDay)
+                    ? (
+                      <div className={styles.calendar__current_day}>
+                        {currDay.format('D')}
+                      </div>
+                    )
+                    : (currDay.format('D'))
+                  }
+                </div>
+              </div>
+
+              <div>
+                <ul className={styles.calendar__event_list_wrapper}>
+                  {
+                    events
+                      .filter(ev => ev.date >= currDay.format('X') && ev.date <= currDay.clone().endOf('day').format('X'))
+                      .map(ev => (
+                        <li key={ev.id}>
+                          <button className={styles.calendar__event_item_wrapper}>
+                            {ev.title}
+                          </button>
+                        </li>
+                      ))
+                  }
+                </ul>
               </div>
             </div>
           </div>
