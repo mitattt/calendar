@@ -65,7 +65,7 @@ export const CalendarGrid = ({
                         <li key={ev.id}>
                           <button
                             className={styles.calendar__event_item_wrapper}
-                            onClick={(e) => openFormHandler('Update', ev)}
+                            onClick={() => openFormHandler('Update', ev)}
                           >
                             {ev.title}
                           </button>

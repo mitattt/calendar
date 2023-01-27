@@ -7,7 +7,7 @@ export const AddButton = ({ openFormHandler }) => {
   return (
     <button
       className={styles.button}
-      onClick={(e) => openFormHandler('Create')}
+      onClick={() => openFormHandler('Save')}
     >
       <img src={plus} className={styles.button__img}></img>
     </button>

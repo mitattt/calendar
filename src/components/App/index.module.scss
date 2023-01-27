@@ -88,13 +88,28 @@
     font-size: 15px;
   }
 
-  &__button {
+  &__buttons {
+    display: flex;
+    justify-content: center;
+  }
+  
+  &__button_save {
     font-family: inherit;
     font-weight: 600;
     margin: 0 auto;
     width: 100px;
     height: 40px;
     background-color:greenyellow;
+    border-radius: 5px;
+  }
+
+  &__button_cancel {
+    font-family: inherit;
+    font-weight: 600;
+    margin: 0 auto;
+    width: 100px;
+    height: 40px;
+    background-color:red;
     border-radius: 5px;
   }
 }
