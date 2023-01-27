@@ -5,11 +5,11 @@ import { DateSwitcher } from '../DateSwitcher';
 import styles from './Header.module.scss';
 
 export const Header = ({
-  today, currHandler, prevHandler, nextHandler
+  today, currHandler, prevHandler, nextHandler, onOpenForm
 }) => {
   return (
     <div className={styles.container}>
-      <AddButton />
+      <AddButton onOpenForm={onOpenForm}/>
       <DateSwitcher
         today={today}
         prevHandler={prevHandler}

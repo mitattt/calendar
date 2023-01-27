@@ -1,10 +1,14 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 import styles from './AddButton.module.scss';
 import plus from '../../assets/img/plus.png';
 
-export const AddButton = () => {
+export const AddButton = ({ openFormHandler }) => {
   return (
-    <button className={styles.button}>
+    <button
+      className={styles.button}
+      onClick={(e) => openFormHandler('Create')}
+    >
       <img src={plus} className={styles.button__img}></img>
     </button>
   );
