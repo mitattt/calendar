@@ -27,8 +27,7 @@ const App = () => {
   const endDateQuery = startDay.clone().add(42, 'days').format('X');
 
   const openFormHandler = (methodName, eventForUpdate, date) => {
-    const newDate = moment(date, 'YYYY-MM-DD').valueOf();
-
+    const newDate = moment(date).format('X');
     setIsVisibleForm(true);
     setEvent(eventForUpdate || {
       ...defaultEvent,
@@ -94,7 +93,7 @@ const App = () => {
     fetch(`${BASE_URL}/events?date_gte=${startDateQuery}&date_lte=${endDateQuery}`)
       .then(res => res.json())
       .then(res => setEvents(res));
-  }, [today]);
+  }, [date, today]);
 
   return (
     <>
