@@ -93,7 +93,7 @@ const App = () => {
     fetch(`${BASE_URL}/events?date_gte=${startDateQuery}&date_lte=${endDateQuery}`)
       .then(res => res.json())
       .then(res => setEvents(res));
-  }, [date, today]);
+  }, [date, setDate, today]);
 
   return (
     <>
