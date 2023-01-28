@@ -21,6 +21,7 @@ const App = () => {
   const [isVisibleForm, setIsVisibleForm] = useState(false);
   const [method, setMethod] = useState(null);
   const [date, setDate] = useState('');
+  const [isFormValid, setIsFormValid] = useState(false);
 
   const startDay = today.clone().startOf('month').startOf('week').subtract(1, 'day');
   const startDateQuery = startDay.clone().format('X');
@@ -35,7 +36,6 @@ const App = () => {
     });
     setMethod(methodName);
   };
-
   const cancelFormHandler = () => {
     setIsVisibleForm(false);
     setEvent(null);
@@ -53,7 +53,7 @@ const App = () => {
     })
       .then(res => res.json())
       .then(res => {
-        setEvents(prevState => prevState.filter(e => e.id !== event.id));
+        setEvents(prev => prev.filter(e => e.id !== event.id));
         cancelFormHandler();
       });
   };
@@ -63,6 +63,9 @@ const App = () => {
       ...prev,
       [field]: text
     }));
+    if (event.title && date) {
+      setIsFormValid(true);
+    };
   };
 
   const eventFetchHandler = () => {
@@ -93,13 +96,13 @@ const App = () => {
     fetch(`${BASE_URL}/events?date_gte=${startDateQuery}&date_lte=${endDateQuery}`)
       .then(res => res.json())
       .then(res => setEvents(res));
-  }, [date, setDate, today]);
+  }, [date, today, setDate]);
 
   return (
     <>
       {
         isVisibleForm && (
-          <div className={styles.form__position_wrapper}>
+          <form className={styles.form}>
             <div className={styles.form__wrapper}>
               <div className={styles.form__createdAt}>Created at 23.12.200 12:21</div>
               <p className={styles.form__hint}>Title *</p>
@@ -110,7 +113,7 @@ const App = () => {
                 value={event.title}
                 onChange={e => changeEventHandler(e.target.value, 'title')}
               ></input>
-              <p className={styles.form__hint}></p>
+              <p className={styles.form__hint}>Description</p>
               <textarea
                 className={styles.form__description}
                 value={event.description}
@@ -132,15 +135,16 @@ const App = () => {
                 </div>
                 <div className={styles.forn__container_wrapper}>
                   <p className={styles.form__hint}>Begin time</p>
-                  <label htmlFor="no_step">
+                  <label>
+                    <input type="time"className={styles.form__time}></input>
                   </label>
-                  <input type="time" id="no_step" className={styles.form__time}></input>
                 </div>
               </div>
               <div className={styles.form__buttons}>
                 <button
+                  type='submit'
                   className={styles.form__button_save}
-                  onClick={eventFetchHandler}
+                  onClick={isFormValid ? eventFetchHandler : null}
                 >
                   {method}
                 </button>
@@ -153,7 +157,7 @@ const App = () => {
                 {
                   method === 'Update' && (
                     <button
-                      className={styles.form__button_save}
+                      className={styles.form__button_remove}
                       onClick={removeEventHandler}
                     >
                       Remove
@@ -163,7 +167,7 @@ const App = () => {
 
               </div>
             </div>
-          </div>
+          </form>
         )
       }
       <div className={styles.container}>

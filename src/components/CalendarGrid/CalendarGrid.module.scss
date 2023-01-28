@@ -1,3 +1,5 @@
+@import '../../styles/mixins';
+
 .days {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
@@ -11,18 +13,22 @@
   }
 }
 
-
 .calendar {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  grid-template-rows: repeat(6, 1fr);  
-  
+  grid-template-rows: repeat(6, 1fr); 
+
   &__wrapper {
-    min-width: 160px;
-    height: 130px;
-    color: #1e1f216f;
+    color: #ffef0863;
     font-weight: 600;
     border: 1px solid rgba(0, 0, 0, 0.281);
+
+    @include onDesktop {
+      width: 170px;
+      height: 110px;
+      max-width: 200px;
+      max-height: 140px;
+    }
 
     overflow-y: scroll;
     &::-webkit-scrollbar {
@@ -65,7 +71,7 @@
     align-items:center;
     height: 100%;
     width: 100%;
-    background-color:#4b3c72;
+    background-color:#f80101;
     color: #FFF;
     border-radius: 50%
   }
@@ -133,5 +139,5 @@
 
 
 .is_selected {
-  color: #1e1f21;
+  color: #ffef08f8;
 }
