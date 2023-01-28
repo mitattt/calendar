@@ -2,10 +2,16 @@
 import React from 'react';
 import styles from './DateSwitcher.module.scss';
 
-// eslint-disable-next-line react/prop-types
 export const DateSwitcher = ({
-  today, currHandler, prevHandler, nextHandler
+  setToday, handleDateChange, today
 }) => {
+  const prevHandler = () => {
+    setToday(currentMonth => currentMonth.clone().subtract(1, 'month'));
+  };
+  const nextHandler = () => {
+    setToday(currentMonth => currentMonth.clone().add(1, 'month'));
+  };
+
   return (
     <div className={styles.container}>
       <button
@@ -16,7 +22,7 @@ export const DateSwitcher = ({
       </button>
 
       <button
-        onClick={currHandler}
+        onClick={() => handleDateChange(today)}
         className={styles.button__middle}
       >
         {today.format('MMMM')} {today.format('YYYY')}
