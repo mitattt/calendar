@@ -7,15 +7,14 @@
 .button {
   height: 35px;
   width: 35px;
-  background-color: #e6b0b0;;
+  background: #1313134f;
   border-radius: 4px;
   margin-bottom: 5px;
   transition: all 0.2s ease-in-out;
+  color: #FFF;
 
   &:hover {
-    &:hover {
-      background-color: rgba(100, 107, 170, 0.01);
-    }
+    background-color: rgba(100, 107, 170, 0.01);
   }
 
   &__middle {
@@ -23,9 +22,14 @@
     font-weight: bold;
     height: 35px;
     width: 150px;
-    background-color: #e6b0b0;;
+    background: #1313134f;
     border-radius: 4px;
     margin: 0 1px;
     margin-bottom: 5px;
+    color:#FFF;
+
+    &_text {
+      letter-spacing: 2px;
+   }
   }
 }

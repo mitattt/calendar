@@ -18,21 +18,27 @@ export const DateSwitcher = ({
         onClick={prevHandler}
         className={styles.button}
       >
-        {'<'}
+        <p className={styles.button__middle_text}>
+          {'<'}
+        </p>
       </button>
 
       <button
         onClick={() => handleDateChange(today)}
         className={styles.button__middle}
       >
-        {today.format('MMMM')} {today.format('YYYY')}
+        <p className={styles.button__middle_text}>
+          {today.format('MMMM')} {today.format('YYYY')}
+        </p>
       </button>
 
       <button
         onClick={nextHandler}
         className={styles.button}
       >
-        {'>'}
+        <p className={styles.button__middle_text}>
+          {'>'}
+        </p>
       </button>
     </div>
   );

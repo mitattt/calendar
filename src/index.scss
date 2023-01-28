@@ -9,7 +9,6 @@ html {
   display: flex;
   justify-content: center;
   align-items: center;
-  // position: relative;
 }
 
 body,
@@ -30,7 +29,6 @@ body {
   overflow-x: hidden;
   font-size: 14px;
 
-  background-image: url(./assets/img/bg.jpeg);
-  background-size: cover;
+  background-image: url(./assets/img/bg.jpg);
   background-position: center;
 }
