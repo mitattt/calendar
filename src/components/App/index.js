@@ -20,27 +20,43 @@ const App = () => {
   const [event, setEvent] = useState(null);
   const [isVisibleForm, setIsVisibleForm] = useState(false);
   const [method, setMethod] = useState(null);
+  const [date, setDate] = useState('');
 
   const startDay = today.clone().startOf('month').startOf('week').subtract(1, 'day');
   const startDateQuery = startDay.clone().format('X');
   const endDateQuery = startDay.clone().add(42, 'days').format('X');
 
-  const prevHandler = () => {
-    setToday(today => today.clone().subtract(1, 'month'));
-  };
-  const nextHandler = () => {
-    setToday(today => today.clone().add(1, 'month'));
-  };
+  const openFormHandler = (methodName, eventForUpdate, date) => {
+    const newDate = moment(date, 'YYYY-MM-DD').valueOf();
 
-  const openFormHandler = (methodName, eventForUpdate) => {
     setIsVisibleForm(true);
-    setEvent(eventForUpdate || defaultEvent);
+    setEvent(eventForUpdate || {
+      ...defaultEvent,
+      date: newDate
+    });
     setMethod(methodName);
   };
 
   const cancelFormHandler = () => {
     setIsVisibleForm(false);
     setEvent(null);
+  };
+
+  const removeEventHandler = () => {
+    const fetchUrl = `${BASE_URL}/events/${event.id}`;
+    const httpMethod = 'DELETE';
+
+    fetch(fetchUrl, {
+      method: httpMethod,
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+      .then(res => res.json())
+      .then(res => {
+        setEvents(prevState => prevState.filter(e => e.id !== event.id));
+        cancelFormHandler();
+      });
   };
 
   const changeEventHandler = (text, field) => {
@@ -96,19 +112,24 @@ const App = () => {
                 onChange={e => changeEventHandler(e.target.value, 'title')}
               ></input>
               <p className={styles.form__hint}></p>
-              <input
+              <textarea
                 className={styles.form__description}
                 value={event.description}
                 onChange={e => changeEventHandler(e.target.value, 'description')}
-              ></input>
+              ></textarea>
               <div className={styles.form__container}>
                 <div className={styles.forn__container_wrapper}>
                   <p className={styles.form__hint}>Date</p>
                   <input
                     type='date'
                     className={styles.form__date}
+                    value={date}
+                    onChange={(e) => {
+                      setDate(e.target.value);
+                      setEvent({ ...event, date: e.target.value });
+                    }}
                     required
-                  ></input>
+                  />
                 </div>
                 <div className={styles.forn__container_wrapper}>
                   <p className={styles.form__hint}>Begin time</p>
@@ -130,6 +151,17 @@ const App = () => {
                 >
                   Cancel
                 </button>
+                {
+                  method === 'Update' && (
+                    <button
+                      className={styles.form__button_save}
+                      onClick={removeEventHandler}
+                    >
+                      Remove
+                    </button>
+                  )
+                }
+
               </div>
             </div>
           </div>
@@ -140,6 +172,7 @@ const App = () => {
           today={today}
           openFormHandler={openFormHandler}
           setToday={setToday}
+          date={date}
 
         />
         <CalendarGrid

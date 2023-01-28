@@ -7,7 +7,7 @@ import { DateSwitcher } from '../DateSwitcher';
 import styles from './Header.module.scss';
 
 export const Header = ({
-  today, openFormHandler, setToday
+  today, openFormHandler, setToday, date
 }) => {
   const handleDateChange = (date) => {
     setToday(date);
@@ -15,7 +15,7 @@ export const Header = ({
 
   return (
     <div className={styles.container}>
-      <AddButton openFormHandler={openFormHandler} />
+      <AddButton openFormHandler={openFormHandler} date={date}/>
       <div className={styles.container__right}>
         <DateSwitcher
           today={today}

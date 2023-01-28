@@ -1,24 +1,6 @@
 {
   "events": [
     {
-      "id": 1,
-      "title": "go ",
-      "description": "at 00 00",
-      "date": 1674770400
-    },
-    {
-      "id": 2,
-      "title": "shop",
-      "description": "at 21:59:59",
-      "date": 1674856799
-    },
-    {
-      "id": 3,
-      "title": "make tt",
-      "description": "at 00 00",
-      "date": 1674936120
-    },
-    {
       "id": 4,
       "title": "Make money",
       "description": "at 00 00",
@@ -29,12 +11,6 @@
       "title": "Make money",
       "description": "at 22:02:00",
       "date": 1677614520
-    },
-    {
-      "id": 6,
-      "title": "te",
-      "description": "at 22:02:00",
-      "date": 1674676920
     }
   ]
 }
