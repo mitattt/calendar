@@ -7,7 +7,8 @@
 * Eslint
 
 [DEMO-LINK](https://mitattt.github.io/calendar//)
-[API LINK] (https://sixth-scarce-impatiens.glitch.me/events)
+
+[API-LINK](https://sixth-scarce-impatiens.glitch.me/events)
 
 ## This page contains:
 
