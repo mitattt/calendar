@@ -22,6 +22,10 @@
     color: #ffef0863;
     font-weight: 600;
     border: 1px solid rgba(0, 0, 0, 0.281);
+    width: 140px;
+    height: 80px;
+    max-width: 200px;
+    max-height: 140px;
 
     @include onDesktop {
       width: 170px;

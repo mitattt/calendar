@@ -1,70 +1,16 @@
 {
   "events": [
     {
-      "id": 4,
-      "title": "Make money",
-      "description": "at 00 00",
-      "date": 1675634399
+      "title": "ghjghjg",
+      "description": "kl;kl;",
+      "date": "1673992800",
+      "id": 1
     },
     {
-      "title": "ghjghjghj",
-      "description": "fghjghj",
-      "date": "2023-01-27",
-      "id": 6
-    },
-    {
-      "title": "sdfsdf",
-      "description": "sdfsdf",
-      "date": "2023-01-19",
-      "id": 9
-    },
-    {
-      "title": "gjghjg",
-      "description": "ghjghj",
-      "date": "2023-01-19",
-      "id": 10
-    },
-    {
-      "title": "",
+      "title": "test without date",
       "description": "",
-      "date": "2023-01-29",
-      "id": 12
-    },
-    {
-      "title": "sdf",
-      "description": "sdfsdf",
-      "date": "2023-01-28",
-      "id": 13
-    },
-    {
-      "title": "hjkhj",
-      "description": "kh",
-      "date": "2023-01-28",
-      "id": 14
-    },
-    {
-      "title": "fgfdg",
-      "description": "",
-      "date": "2023-01-28",
-      "id": 15
-    },
-    {
-      "title": "sdf",
-      "description": "dsds",
-      "date": "2023-01-28",
-      "id": 16
-    },
-    {
-      "title": "fdsfsd",
-      "description": "fsdf",
-      "date": "2023-01-28",
-      "id": 17
-    },
-    {
-      "title": "fdsfsd",
-      "description": "fsdf",
-      "date": "2023-01-28",
-      "id": 18
+      "date": "Invalid date",
+      "id": 2
     }
   ]
 }
