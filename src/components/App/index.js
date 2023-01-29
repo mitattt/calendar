@@ -22,11 +22,14 @@ const App = () => {
   const [method, setMethod] = useState(null);
   const [date, setDate] = useState('');
   const [isFormValid, setIsFormValid] = useState(false);
-  const [isTitle, setIsTitle] = useState(false);
 
   const startDay = today.clone().startOf('month').startOf('week').subtract(1, 'day');
   const startDateQuery = startDay.clone().format('X');
   const endDateQuery = startDay.clone().add(42, 'days').format('X');
+
+  // useEffect(() => {
+  //   localStorage.setItem('currentMonth', JSON.stringify(today));
+  // }, [today]);
 
   const openFormHandler = (methodName, eventForUpdate, date) => {
     const newDate = moment(date).format('X');
@@ -65,9 +68,6 @@ const App = () => {
       ...prev,
       [field]: text
     }));
-    if (isTitle && date) {
-      setIsFormValid(true);
-    };
   };
 
   const eventFetchHandler = () => {
@@ -114,7 +114,7 @@ const App = () => {
                 value={event.title}
                 onChange={e => {
                   changeEventHandler(e.target.value.trim(), 'title');
-                  setIsTitle(true);
+                  setIsFormValid(true);
                 }}
                 required
               ></input>
@@ -150,6 +150,7 @@ const App = () => {
                   type='submit'
                   className={styles.form__button_save}
                   onClick={isFormValid ? eventFetchHandler : null}
+                  // onClick={eventFetchHandler}
                 >
                   {method}
                 </button>
