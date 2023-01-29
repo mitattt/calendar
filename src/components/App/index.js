@@ -22,17 +22,18 @@ const App = () => {
   const [method, setMethod] = useState(null);
   const [date, setDate] = useState('');
   const [isFormValid, setIsFormValid] = useState(false);
-  const formRef = useRef(null);
+  const [isTitle, setIsTitle] = useState(false);
 
   const startDay = today.clone().startOf('month').startOf('week').subtract(1, 'day');
   const startDateQuery = startDay.clone().format('X');
   const endDateQuery = startDay.clone().add(42, 'days').format('X');
 
   const openFormHandler = (methodName, eventForUpdate, date) => {
+    const newDate = moment(date).format('X');
     setIsVisibleForm(true);
     setEvent(eventForUpdate || {
       ...defaultEvent,
-      date: moment(date).format('X')
+      date: newDate
     });
     setMethod(methodName);
   };
@@ -64,7 +65,7 @@ const App = () => {
       ...prev,
       [field]: text
     }));
-    if (event.title && date) {
+    if (isTitle && date) {
       setIsFormValid(true);
     };
   };
@@ -103,25 +104,19 @@ const App = () => {
     <>
       {
         isVisibleForm && (
-          <form
-            ref={formRef}
-            className={styles.form}
-            onSubmit={(e) => {
-              if (isFormValid) {
-                eventFetchHandler();
-                formRef.current.submit();
-              }
-            }}
-          >
-            <div className={styles.form__wrapper}>
+          <div className={styles.form}>
+            <form className={styles.form__wrapper}>
               <div className={styles.form__createdAt}>Created at 23.12.200 12:21</div>
               <p className={styles.form__hint}>Title *</p>
               <input
                 className={styles.form__title}
                 placeholder='Title goes here'
-                required
                 value={event.title}
-                onChange={e => changeEventHandler(e.target.value, 'title')}
+                onChange={e => {
+                  changeEventHandler(e.target.value.trim(), 'title');
+                  setIsTitle(true);
+                }}
+                required
               ></input>
               <p className={styles.form__hint}>Description</p>
               <textarea
@@ -138,7 +133,7 @@ const App = () => {
                     value={date}
                     onChange={(e) => {
                       setDate(e.target.value);
-                      setEvent({ ...event, date: e.target.value });
+                      setEvent({ ...event, date: moment(e.target.value).format('X') });
                     }}
                     required
                   />
@@ -146,7 +141,7 @@ const App = () => {
                 <div className={styles.forn__container_wrapper}>
                   <p className={styles.form__hint}>Begin time</p>
                   <label>
-                    <input type="time"className={styles.form__time}></input>
+                    <input type="time" className={styles.form__time}></input>
                   </label>
                 </div>
               </div>
@@ -154,15 +149,11 @@ const App = () => {
                 <button
                   type='submit'
                   className={styles.form__button_save}
-                  onClick={() => {
-                    if (isFormValid) {
-                      eventFetchHandler();
-                      formRef.current.submit();
-                    }
-                  }}
+                  onClick={isFormValid ? eventFetchHandler : null}
                 >
                   {method}
                 </button>
+
                 <button
                   className={styles.form__button_cancel}
                   onClick={cancelFormHandler}
@@ -181,8 +172,8 @@ const App = () => {
                 }
 
               </div>
-            </div>
-          </form>
+            </form>
+          </div>
         )
       }
       <div className={styles.container}>
