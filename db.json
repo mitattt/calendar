@@ -1,0 +1,34 @@
+{
+  "events": [
+    {
+      "id": 3,
+      "title": "test",
+      "description": "test",
+      "date": 1675031170
+    },
+    {
+      "id": 4,
+      "title": "test",
+      "description": "test",
+      "date": 1675031170
+    },
+    {
+      "id": 5,
+      "title": "test",
+      "description": "test",
+      "date": 1675031170
+    },
+    {
+      "id": 6,
+      "title": "test",
+      "description": "test",
+      "date": 1675031170
+    },
+    {
+      "id": 7,
+      "title": "test",
+      "description": "test",
+      "date": 1675031170
+    }
+  ]
+}

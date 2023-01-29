@@ -5,7 +5,8 @@ import { CalendarGrid } from '../CalendarGrid';
 import styles from './index.module.scss';
 import moment from 'moment/moment';
 
-const BASE_URL = 'https://sixth-scarce-impatiens.glitch.me';
+// const BASE_URL = 'https://sixth-scarce-impatiens.glitch.me';
+const BASE_URL = 'http://localhost:5000';
 const defaultEvent = {
   title: '',
   description: '',
