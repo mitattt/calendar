@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { Header } from '../Header';
 import { CalendarGrid } from '../CalendarGrid';
 import styles from './index.module.scss';
@@ -22,20 +22,21 @@ const App = () => {
   const [method, setMethod] = useState(null);
   const [date, setDate] = useState('');
   const [isFormValid, setIsFormValid] = useState(false);
+  const formRef = useRef(null);
 
   const startDay = today.clone().startOf('month').startOf('week').subtract(1, 'day');
   const startDateQuery = startDay.clone().format('X');
   const endDateQuery = startDay.clone().add(42, 'days').format('X');
 
   const openFormHandler = (methodName, eventForUpdate, date) => {
-    const newDate = moment(date).format('X');
     setIsVisibleForm(true);
     setEvent(eventForUpdate || {
       ...defaultEvent,
-      date: newDate
+      date: moment(date).format('X')
     });
     setMethod(methodName);
   };
+
   const cancelFormHandler = () => {
     setIsVisibleForm(false);
     setEvent(null);
@@ -96,13 +97,22 @@ const App = () => {
     fetch(`${BASE_URL}/events?date_gte=${startDateQuery}&date_lte=${endDateQuery}`)
       .then(res => res.json())
       .then(res => setEvents(res));
-  }, [date, today, setDate]);
+  }, [date, today]);
 
   return (
     <>
       {
         isVisibleForm && (
-          <form className={styles.form}>
+          <form
+            ref={formRef}
+            className={styles.form}
+            onSubmit={(e) => {
+              if (isFormValid) {
+                eventFetchHandler();
+                formRef.current.submit();
+              }
+            }}
+          >
             <div className={styles.form__wrapper}>
               <div className={styles.form__createdAt}>Created at 23.12.200 12:21</div>
               <p className={styles.form__hint}>Title *</p>
@@ -144,7 +154,12 @@ const App = () => {
                 <button
                   type='submit'
                   className={styles.form__button_save}
-                  onClick={isFormValid ? eventFetchHandler : null}
+                  onClick={() => {
+                    if (isFormValid) {
+                      eventFetchHandler();
+                      formRef.current.submit();
+                    }
+                  }}
                 >
                   {method}
                 </button>
