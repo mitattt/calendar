@@ -21,7 +21,6 @@ const App = () => {
   const [isVisibleForm, setIsVisibleForm] = useState(false);
   const [method, setMethod] = useState(null);
   const [date, setDate] = useState('');
-  const [isFormValid, setIsFormValid] = useState(false);
 
   const startDay = today.clone().startOf('month').startOf('week').subtract(1, 'day');
   const startDateQuery = startDay.clone().format('X');
@@ -114,7 +113,6 @@ const App = () => {
                 value={event.title}
                 onChange={e => {
                   changeEventHandler(e.target.value.trim(), 'title');
-                  setIsFormValid(true);
                 }}
                 required
               ></input>
@@ -149,7 +147,7 @@ const App = () => {
                 <button
                   type='submit'
                   className={styles.form__button_save}
-                  onClick={isFormValid ? eventFetchHandler : null}
+                  onClick={eventFetchHandler}
                   // onClick={eventFetchHandler}
                 >
                   {method}
