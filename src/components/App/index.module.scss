@@ -1,7 +1,8 @@
 @import '../../styles/mixins';
+@import '../../styles/vars';
 
 .container {
-  box-shadow: 0 0 0 1px #000000, 0 10px 20px 5px rgba(64, 8, 82, 0.329);
+  box-shadow: 0 0 0 1px #000000, 0 10px 20px 5px $shadow;
   overflow: hidden;
   border-radius: 5px;
   backdrop-filter: blur(15px);
@@ -10,7 +11,7 @@
 .form {
   position: absolute;
   z-index: 10;
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(0, 0, 0, 0.4);
   top: 0;
   right: 0;
   left: 0;
@@ -25,7 +26,7 @@
     flex-direction: column;
     width: 400px;
     backdrop-filter: blur(5px);
-    color: black;
+    color: $black-color;
     height: 500px;
     padding: 20px;
   }
@@ -33,7 +34,7 @@
 
   &__hint {
     font-size: 13px;
-    color: #FFF;
+    color: $white-color;
     opacity: 0.7;
     margin-bottom: 10px;
     font-weight: 600;
@@ -41,7 +42,7 @@
   }
 
   &__createdAt {
-    color: #FFF;
+    color: $white-color;
     font-size: 13px;
     margin-bottom: 40px;
     font-weight: 600;
@@ -50,7 +51,7 @@
   &__title {
     font-size: 15px;
     border: unset;
-    border-bottom: 1px solid grey;
+    border-bottom: 1px solid $grey;
     display: flex;
     align-items: center;
     width: 100%;
@@ -63,7 +64,7 @@
   &__description {
     font-size: 15px;
     border: unset;
-    border-bottom: 1px solid grey;
+    border-bottom: 1px solid $grey;
     width: 100%;
 
     
@@ -78,7 +79,7 @@
 
   &__date, &__time {
     width: 100%;
-    border-bottom: 1px solid grey;
+    border-bottom: 1px solid $grey;
     padding: 5px;
     outline: unset;
   }
@@ -100,7 +101,7 @@
     letter-spacing: 1px;
     opacity: 0.8;
     font-size: 15px;
-    color: #FFF;
+    color: $white-color;
   }
 
   &__buttons {
@@ -114,12 +115,12 @@
     margin: 0 auto;
     width: 100px;
     height: 40px;
-    background-color:#00ff9f;
+    background-color:$green;
     border-radius: 5px;
     transition: 0.2s ease;
 
     &:hover {
-      box-shadow: 0 0 20px #00ff9f;
+      box-shadow: 0 0 20px $green;
     }
   }
 
@@ -129,12 +130,12 @@
     margin: 0 auto;
     width: 100px;
     height: 40px;
-    background-color:#ff0677;
+    background-color:$cancel;
     border-radius: 5px;
     transition: 0.2s ease;
 
     &:hover {
-      box-shadow: 0 0 20px #ff0677;
+      box-shadow: 0 0 20px $cancel;
       
     }
   }
@@ -145,19 +146,19 @@
     margin: 0 auto;
     width: 100px;
     height: 40px;
-    background-color:#fc454b;
+    background-color:$remove;
     border-radius: 5px;
     transition: 0.2s ease;
     
     &:hover {
-      box-shadow: 0 0 20px #fc454b;
+      box-shadow: 0 0 20px $remove;
     }
   }
 }
 
 input[type="time"], input[type="date"] {
   border: none;
-  border-bottom: 1px solid grey;
+  border-bottom: 1px solid $grey;
   display: block;
   font-size: 15px;
   font-family: inherit;
@@ -168,19 +169,18 @@ input[type="time"], input[type="date"] {
 
 input[type="time"]:before {
   content: attr(placeholder) !important;
-  color: #aaa;
+  color: $input;
   font-style:italic;
   font-size:0.9em;
 }
 
 input[type="date"]:before {
   content: attr(placeholder) !important;
-  color: #aaa;
+  color: $input;
   font-style:italic;
   font-size:0.9em;
 }
 
-$neon-color: #ecd60b;
 
 input, textarea {
   letter-spacing: 1px;

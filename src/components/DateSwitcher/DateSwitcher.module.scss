@@ -1,3 +1,5 @@
+@import '../../styles/vars';
+
 .container {
  display: flex;
  justify-content: space-between;
@@ -7,11 +9,11 @@
 .button {
   height: 35px;
   width: 35px;
-  background: #1313134f;
+  background: $button-background;
   border-radius: 4px;
   margin-bottom: 5px;
   transition: all 0.2s ease-in-out;
-  color: #FFF;
+  color: $white-color;
 
   &:hover {
     background-color: rgba(100, 107, 170, 0.01);
@@ -22,11 +24,11 @@
     font-weight: bold;
     height: 35px;
     width: 150px;
-    background: #1313134f;
+    background: $button-background;
     border-radius: 4px;
     margin: 0 1px;
     margin-bottom: 5px;
-    color:#FFF;
+    color:$white-color;
 
     &_text {
       letter-spacing: 2px;
