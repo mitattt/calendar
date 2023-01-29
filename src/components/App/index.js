@@ -5,7 +5,7 @@ import { CalendarGrid } from '../CalendarGrid';
 import styles from './index.module.scss';
 import moment from 'moment/moment';
 
-const BASE_URL = 'http://localhost:5000';
+const BASE_URL = 'https://sixth-scarce-impatiens.glitch.me';
 const defaultEvent = {
   title: '',
   description: '',
@@ -25,10 +25,6 @@ const App = () => {
   const startDay = today.clone().startOf('month').startOf('week').subtract(1, 'day');
   const startDateQuery = startDay.clone().format('X');
   const endDateQuery = startDay.clone().add(42, 'days').format('X');
-
-  // useEffect(() => {
-  //   localStorage.setItem('currentMonth', JSON.stringify(today));
-  // }, [today]);
 
   const openFormHandler = (methodName, eventForUpdate, date) => {
     const newDate = moment(date).format('X');
@@ -148,7 +144,6 @@ const App = () => {
                   type='submit'
                   className={styles.form__button_save}
                   onClick={eventFetchHandler}
-                  // onClick={eventFetchHandler}
                 >
                   {method}
                 </button>
